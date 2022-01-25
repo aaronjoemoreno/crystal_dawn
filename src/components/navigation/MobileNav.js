@@ -1,22 +1,7 @@
-import * as React from "react"
-import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import React from 'react'
+import { slide as Menu } from 'react-burger-menu'
 
-// import Header from "./header"
-import { MobileNav } from "./navigation/mobileNav"
-import "./layout.css"
-
-const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
+export const MobileNav = () => {
   var styles = {
     bmBurgerButton: {
       position: 'fixed',
@@ -26,10 +11,10 @@ const Layout = ({ children }) => {
       top: '36px'
     },
     bmBurgerBars: {
-      background: '#373a47'
+      background: 'green'
     },
     bmBurgerBarsHover: {
-      background: '#a90000'
+      background: 'green'
     },
     bmCrossButton: {
       height: '24px',
@@ -63,16 +48,11 @@ const Layout = ({ children }) => {
   }
 
   return (
-    <>
-      {/* <Header siteTitle={data.site.siteMetadata?.title || `Title`} /> */}
-      <MobileNav />
-      <main>{children}</main>
-    </>
+    <Menu styles={styles}>
+      <a id="home" className="menu-item" href="/">Home</a>
+      <a id="about" className="menu-item" href="/about">About</a>
+      <a id="contact" className="menu-item" href="/contact">Contact</a>
+      {/* <a onClick={ this.showSettings } className="menu-item--small" href="">Settings</a> */}
+    </Menu>
   )
-}
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-}
-
-export default Layout
+};

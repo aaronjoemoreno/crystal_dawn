@@ -1,0 +1,8 @@
+@import './typography.css';
+
+:root{
+    --pink: #D1A69F;
+    --tan: #EDEAE9;
+    --main-font: 'Staatliches', cursive;
+    --secondary-font: 'Abel', sans-serif;
+}
