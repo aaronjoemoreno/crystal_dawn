@@ -92,8 +92,9 @@ Note: Beware of modifying this element as it can break the animations - you shou
 .bm-menu-wrap {
   position: absolute;
   min-width: 100%;
-  max-height: 100vh;
+  height: auto !important;
 }
+
 
 /* General sidebar styles */
 .bm-menu {
@@ -126,8 +127,6 @@ Note: Beware of modifying this element as it can break the animations - you shou
 .bm-item {
   display: inline-block;
 }
-
-
 
 /* Styling of overlay */
 .bm-overlay {
