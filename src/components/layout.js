@@ -1,6 +1,6 @@
 import * as React from "react"
 import PropTypes from "prop-types"
-import MobileNav from "./mobileNav"
+import MobileNav from "./MobileNav"
 import "./layout.css"
 
 const Layout = ({ children }) => {
