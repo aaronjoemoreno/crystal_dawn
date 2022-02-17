@@ -1,5 +1,4 @@
 import React from "react"
-import PropTypes from "prop-types"
 import styled from 'styled-components'
 
 const Container = styled.div`
@@ -43,7 +42,7 @@ const Container = styled.div`
 
 `
 
-const Header = ({ siteTitle }) => {
+export const Header = ({ siteTitle }) => {
   return(
     <Container>
           <div className="icon">
@@ -63,5 +62,3 @@ const Header = ({ siteTitle }) => {
     </Container>
   )
 }
-
-export default Header
