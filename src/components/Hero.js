@@ -42,7 +42,7 @@ const Container = styled.div`
 
 `
 
-export const Header = () => {
+export const Hero = () => {
   return(
     <Container>
           <div className="icon">
