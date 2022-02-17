@@ -1,12 +1,14 @@
 @import './assets/styles/variables.css';
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
 
 html, body {
   padding: 0;
   margin: 0;
   font-size: 10px;
-  font-family: var(--main-font-regular);
-  box-sizing: border-box;
   font-family: var(--main-font);
+  box-sizing: border-box;
 }
 
 h1, h2, h3, h4, h5{
