@@ -1,7 +1,7 @@
-import React, { useRef } from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
-import { useIntersection } from "react-use";
-import gsap from "gsap";
+import { useAnimation, motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const Container = styled.div`
   width: 100%;
@@ -17,17 +17,16 @@ const Container = styled.div`
     transform: rotate(180deg);
 }
 
-.custom-shape-divider-top-1645069763 svg {
+  .custom-shape-divider-top-1645069763 svg {
     position: relative;
     display: block;
     width: calc(100% + 1.3px);
     height: 248px;
-}
+  }
 
-.custom-shape-divider-top-1645069763 .shape-fill {
+  .custom-shape-divider-top-1645069763 .shape-fill {
     fill: #fff;
-}
-
+  }
 `
 
 const AboutContainer = styled.div`
@@ -45,58 +44,59 @@ const AboutContainer = styled.div`
   }
 `
 
+const titleAnimation = {
+  visible: { x: 0, transition: { duration: 1 } },
+  hidden: { x: -1000 }
+};
+
+const bodyAnimation = {
+  visible: { x: 0, transition: { duration: .5 } },
+  hidden: { x: -1000 }
+};
+
 export const About = () => {
+  const controls = useAnimation();
+  const [ref, inView] = useInView();
 
-  const sectionRef = useRef(null);
-  // All the ref to be observed
-  const intersection = useIntersection(sectionRef, {
-    root: null,
-    rootMargin: "0px",
-    threshold: .4
-  });
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }else{
+      controls.start("hidden");
+    }
 
-  // Animation for fading in
-  const fadeIn = element => {
-    gsap.to(element, 1, {
-      opacity: 1,
-      y: -60,
-      ease: "power4.out",
-      stagger: {
-        amount: 0.3
-      }
-    });
-  };
-  // Animation for fading out
-  const fadeOut = element => {
-    gsap.to(element, 1, {
-      opacity: 0,
-      y: -20,
-      ease: "power4.out"
-    });
-  };
-
-  // checking to see when the vieport is visible to the user
-  intersection && intersection.intersectionRatio < .4
-    ? fadeOut(".fadeIn")
-    : fadeIn(".fadeIn");
+  }, [controls, inView]);
 
   return (
     <>
     <Container>
-      <div class="custom-shape-divider-top-1645069763">
+      <div className="custom-shape-divider-top-1645069763">
           <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-              <path d="M598.97 114.72L0 0 0 120 1200 120 1200 0 598.97 114.72z" class="shape-fill"></path>
+              <path d="M598.97 114.72L0 0 0 120 1200 120 1200 0 598.97 114.72z" className="shape-fill"></path>
           </svg>
       </div>
     </Container>
     <AboutContainer>
-      <div className="section-second" ref={sectionRef}>
-        <h1 className='fadeIn'>HELLO</h1>
-        <p className="fadeIn">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur reprehenderit quod distinctio magnam reiciendis sed excepturi doloremque! Sit vitae non similique voluptate omnis atque fugit quidem molestias! Iste, corporis adipisci.
+      <div className="section-second">
+        <motion.h1
+        ref={ref}
+        animate={controls}
+        initial="hidden"
+        variants={titleAnimation}
+        >
+        HELLO
+        </motion.h1>
+        <motion.p
+        ref={ref}
+        animate={controls}
+        initial="hidden"
+        variants={bodyAnimation}
+        style={{margin: '0'}}
+        >Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur reprehenderit quod distinctio magnam reiciendis sed excepturi doloremque! Sit vitae non similique voluptate omnis atque fugit quidem molestias! Iste, corporis adipisci.
         <br/>
         <br/>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur reprehenderit quod distinctio magnam reiciendis sed excepturi doloremque! Sit vitae non similique voluptate omnis atque fugit quidem molestias! Iste, corporis adipisci.
-        </p>
+        </motion.p>
       </div>
     </AboutContainer>
     </>
