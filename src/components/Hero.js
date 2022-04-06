@@ -57,7 +57,6 @@ export const Hero = () => {
   `)
 
   const { allSanityCollection: { nodes } } = data
-  console.log(nodes);
 
   return(
     <Container>
@@ -71,7 +70,7 @@ export const Hero = () => {
           <div className="links">
             <ul>
             {nodes.map(navItem => {
-              return(<li><h5>{navItem.title}</h5></li>)
+              return(<li key={navItem.title}><h5>{navItem.title}</h5></li>)
             })}
             </ul>
           </div>

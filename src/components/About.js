@@ -47,6 +47,7 @@ const GallaryContainer = styled.div`
     gap: 20px;
     flex-wrap: wrap;
     margin: 0 auto;
+    text-align: center;
   }
 
   .section-second{
@@ -73,7 +74,6 @@ export const About = () => {
   const controls = useAnimation();
   const [ref, inView] = useInView();
 
-
   const data = useStaticQuery(graphql`
   query Product {
     allSanityProduct {
@@ -98,6 +98,7 @@ export const About = () => {
   `)
 
   const {allSanityProduct: { edges }} = data
+  console.log(edges);
 
   useEffect(() => {
     if (inView) {
@@ -121,7 +122,7 @@ export const About = () => {
       <div className="card-container">
       {edges.map(item => {
         return(
-          <GallaryCard title={item.node.title} key={item.node.id} images={item.node.images} cost={item.node.cost}
+          <GallaryCard title={item.node.title} key={item.node.id} images={item.node.images} cost={item.node.cost} sold={item.node.isSold}
           />)
       })}
       </div>

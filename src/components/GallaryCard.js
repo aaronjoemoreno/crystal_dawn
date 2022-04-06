@@ -4,7 +4,6 @@ import { GatsbyImage } from "gatsby-plugin-image"
 
 const Card = styled.div`
   position: relative;
-  margin: 0 auto;
   padding: 2rem;
   height: 400px;
   width: 300px;
@@ -23,8 +22,19 @@ const Card = styled.div`
     bottom: 20px;
   }
 
+  .sold{
+    width: 70px;
+    padding: 3px 0px 3px 0px;
+    text-align: center;
+    position: absolute;
+    bottom: 20px;
+    right: 15px;
+    background: var(--black);
+    color: var(--white);
+  }
+
 `
-export const GallaryCard = ({title, details, images, cost}) => {
+export const GallaryCard = ({title, images, cost, sold}) => {
   const firstImage = images[0]
 
   return (
@@ -32,6 +42,9 @@ export const GallaryCard = ({title, details, images, cost}) => {
       <GatsbyImage image={firstImage.asset.gatsbyImageData} alt={title}/>
       <h5 className="title">{title}</h5>
       <h5 className="cost">${cost}</h5>
+      {sold == false &&
+        <h5 className="sold">Sold</h5>
+      }
     </Card>
   )
 }
