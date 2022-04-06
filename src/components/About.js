@@ -1,12 +1,17 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
-import { useAnimation, motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import { useAnimation, motion } from "framer-motion"
+import { useInView } from "react-intersection-observer"
+import { graphql, useStaticQuery } from "gatsby"
+import { GatsbyImage } from 'gatsby-plugin-image'
+import { GallaryCard } from './GallaryCard'
+
+{/* <GatsbyImage image={pastor.image.asset.gatsbyImageData}/> */}
 
 const Container = styled.div`
   width: 100%;
   height: 50vh;
-  background: var(--pink);
+  background: var(--black);
 
   .custom-shape-divider-top-1645069763 {
     position: absolute;
@@ -29,10 +34,20 @@ const Container = styled.div`
   }
 `
 
-const AboutContainer = styled.div`
+const GallaryContainer = styled.div`
   width: 100%;
   height: auto;
-  background: var(--pink);
+  background: var(--black);
+  color: var(--white);
+
+  .card-container{
+    width: 80%;
+    max-width: 1500px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 0 auto;
+  }
 
   .section-second{
     width: 80%;
@@ -46,17 +61,43 @@ const AboutContainer = styled.div`
 
 const titleAnimation = {
   visible: { x: 0, transition: { duration: 1 } },
-  hidden: { x: -1000 }
+  hidden: { x: -100 }
 };
 
 const bodyAnimation = {
   visible: { x: 0, transition: { duration: .5 } },
-  hidden: { x: -1000 }
+  hidden: { x: -100 }
 };
 
 export const About = () => {
   const controls = useAnimation();
   const [ref, inView] = useInView();
+
+
+  const data = useStaticQuery(graphql`
+  query Product {
+    allSanityProduct {
+      edges {
+        node {
+          id
+          isSold
+          cost
+          link
+          title
+          tags
+          snippet
+          images {
+            asset{
+              gatsbyImageData(placeholder: BLURRED)
+            }
+          }
+        }
+      }
+    }
+  }
+  `)
+
+  const {allSanityProduct: { edges }} = data
 
   useEffect(() => {
     if (inView) {
@@ -76,7 +117,16 @@ export const About = () => {
           </svg>
       </div>
     </Container>
-    <AboutContainer>
+    <GallaryContainer>
+      <div className="card-container">
+      {edges.map(item => {
+        return(
+          <GallaryCard title={item.node.title} key={item.node.id} images={item.node.images} cost={item.node.cost}
+          />)
+      })}
+      </div>
+    </GallaryContainer>
+    {/* <AboutContainer>
       <div className="section-second">
         <motion.h1
         ref={ref}
@@ -98,7 +148,7 @@ export const About = () => {
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur reprehenderit quod distinctio magnam reiciendis sed excepturi doloremque! Sit vitae non similique voluptate omnis atque fugit quidem molestias! Iste, corporis adipisci.
         </motion.p>
       </div>
-    </AboutContainer>
+    </AboutContainer> */}
     </>
   )
 }

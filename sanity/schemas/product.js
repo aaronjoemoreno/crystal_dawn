@@ -73,8 +73,7 @@ export default {
   preview: {
     select: {
       title: 'title',
-      manufactor: 'manufactor.title',
-      media: 'defaultProductVariant.images[0]',
+      media: 'images[0]',
     },
   },
 }
