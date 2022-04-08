@@ -86,6 +86,9 @@ export const About = () => {
           title
           tags
           snippet
+          collection{
+            title
+          }
           images {
             asset{
               gatsbyImageData(placeholder: BLURRED)

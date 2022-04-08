@@ -51,6 +51,12 @@ export default {
       type: 'string',
     },
     {
+      title: 'Collection',
+      name: 'collection',
+      type: 'reference',
+      to: [{type: 'collection'}]
+    },
+    {
       name: 'images',
       title: 'Images',
       type: 'array',

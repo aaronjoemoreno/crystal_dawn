@@ -12,6 +12,10 @@ const Card = styled.div`
   color: var(--black);
   width: 300px;
 
+  &:hover{
+    cursor: pointer;
+  }
+
   .title{
     position: absolute;
     bottom: 50px;
@@ -33,13 +37,25 @@ const Card = styled.div`
     color: var(--white);
   }
 
+  .sold-overlay{
+    background: #000;
+    opacity: 0.2
+  }
+
+  .sold-overlay: hover{
+    background: none;
+    opacity: 1;
+    transition: opacity 0.5s; /* Transition should take 0.3s */
+    -webkit-transition: opacity 0.5s; /* Transition should take 0.3s */
+  }
+
 `
 export const GallaryCard = ({title, images, cost, sold}) => {
   const firstImage = images[0]
 
   return (
     <Card>
-      <GatsbyImage image={firstImage.asset.gatsbyImageData} alt={title}/>
+      <GatsbyImage image={firstImage.asset.gatsbyImageData} alt={title} className={ sold == false ? "sold-overlay" : ""} />
       <h5 className="title">{title}</h5>
       <h5 className="cost">${cost}</h5>
       {sold == false &&

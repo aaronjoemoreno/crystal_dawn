@@ -105,6 +105,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   font-size: 5rem;
   max-height: 100vh;
   min-width: 100vw;
+  min-height: 100vh;
   text-align: center;
 }
 
