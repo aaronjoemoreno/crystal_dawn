@@ -11,6 +11,8 @@ const Card = styled.div`
   border-radius: 20px;
   color: var(--black);
   width: 300px;
+  margin: 0 auto;
+
 
   &:hover{
     cursor: pointer;

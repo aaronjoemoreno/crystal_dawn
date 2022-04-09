@@ -6,9 +6,9 @@ const MobileNav = () => {
 
   return (
     <Menu  width={ '100%' }>
-      <Link to="/"><a id="home" className="menu-item">Home</a></Link>
-      <a id="about" className="menu-item">About</a>
-      <Link to="/contact"><a id="contact" className="menu-item">Contact</a></Link>
+      <Link to="/" id="home" className="menu-item">Home</Link>
+      <Link to="/" id="about" className="menu-item">About</Link>
+      <Link to="/contact" id="contact" className="menu-item">Contact</Link>
     </Menu>
   )
 };

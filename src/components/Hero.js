@@ -1,6 +1,7 @@
 import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
 import styled from 'styled-components'
+import { Link } from "gatsby"
 
 const Container = styled.div`
   width: 100%;
@@ -49,7 +50,11 @@ export const Hero = () => {
     query collections {
       allSanityCollection{
         nodes  {
+          id
           title
+          slug{
+            current
+          }
         }
       }
     }
@@ -63,7 +68,7 @@ export const Hero = () => {
           <div className="links">
             <ul>
             {nodes.map(navItem => {
-              return(<li key={navItem.title}><h5>{navItem.title}</h5></li>)
+              return(<Link to={navItem.slug.current} key={navItem.id}><h5>{navItem.title}</h5></Link>)
             })}
             </ul>
           </div>

@@ -5,6 +5,7 @@ import { useInView } from "react-intersection-observer"
 import { graphql, useStaticQuery } from "gatsby"
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { GallaryCard } from './GallaryCard'
+import { Link } from 'gatsby'
 
 {/* <GatsbyImage image={pastor.image.asset.gatsbyImageData}/> */}
 
@@ -39,15 +40,16 @@ const GallaryContainer = styled.div`
   height: auto;
   background: var(--black);
   color: var(--white);
+  margin: 0 auto;
+  text-align: center;
 
   .card-container{
     width: 80%;
-    max-width: 1500px;
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
     margin: 0 auto;
-    text-align: center;
+    justify-content: center;
   }
 
   .section-second{
@@ -86,6 +88,9 @@ export const About = () => {
           title
           tags
           snippet
+          slug{
+            current
+          }
           collection{
             title
           }
@@ -125,8 +130,10 @@ export const About = () => {
       <div className="card-container">
       {edges.map(item => {
         return(
-          <GallaryCard title={item.node.title} key={item.node.id} images={item.node.images} cost={item.node.cost} sold={item.node.isSold}
-          />)
+          <Link to={item.node.slug.current} key={item.node.id}>
+            <GallaryCard title={item.node.title} images={item.node.images} cost={item.node.cost} sold={item.node.isSold} />
+          </Link>
+          )
       })}
       </div>
     </GallaryContainer>
