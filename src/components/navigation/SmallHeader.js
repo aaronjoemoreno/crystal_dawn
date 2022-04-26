@@ -5,7 +5,7 @@ const Container = styled.div`
 width: 100%;
 text-align: center;
 background: var(--white);
-padding-top: 5rem;
+padding-top: 10rem;
 
 .title{
   font-family: var(--main-font);

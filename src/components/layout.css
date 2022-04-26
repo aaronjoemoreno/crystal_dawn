@@ -19,36 +19,27 @@ h1, h2, h3, h4, h5{
 }
 
 h1{
-  font-size: 7rem;
-  margin: 0;
+  font-size: 5rem;
 }
 
 h2{
-  font-size: 5rem;
-  margin: 0;
-}
-
-h3{
   font-size: 4rem;
 }
 
+h3{
+  font-size: 3rem;
+}
+
 h4{
-  font-size: 3.5rem;
+  font-size: 2rem;
 }
 
 h5{
-  font-size: 2.5rem;
+  font-size: 1rem;
 }
 
 a{
   color: var(--black);
-}
-
-
-@media only screen and (max-width: 480px) {
-  html {
-    font-size: 100%;
-  }
 }
 
 /* Position and sizing of burger button */
@@ -134,4 +125,14 @@ Note: Beware of modifying this element as it can break the animations - you shou
 /* Styling of overlay */
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
+}
+
+@media (min-width: 480px) {
+  h1{
+    font-size: 7rem;
+  }
+
+  h2{
+    font-size: 5rem;
+  }
 }

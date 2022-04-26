@@ -17,6 +17,14 @@ const Container = styled.div`
     padding-bottom: 2rem;
     color: var(--white);
   }
+
+  .card-link{
+    margin-top: 2rem;
+  }
+`
+
+const CardContainer = styled.div`
+  margin-top: 10px;
 `
 
 const CollectionTemplate = ({ data: {products}, pageContext }) => {
@@ -30,11 +38,11 @@ const CollectionTemplate = ({ data: {products}, pageContext }) => {
         {products.nodes.map((item) => {
           const link = `/${item.slug.current}`
           return(
-            <>
-              <Link to={link}>
+            <CardContainer>
+              <Link to={link} className='card-link' key={item.slug}>
                 <GallaryCard title={item.title} key={item.id} images={item.images} cost={item.cost} sold={item.isSold} />
               </Link>
-            </>)
+            </CardContainer>)
           })
         }
       </Container>

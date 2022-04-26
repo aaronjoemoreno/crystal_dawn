@@ -7,22 +7,10 @@ const Container = styled.div`
   width: 100%;
   max-height: 100vh;
   text-align: center;
-  padding-top: 20rem;
+  padding-top: 10rem;
+  padding-bottom: 20rem;
   color: var(--black);
 
-  .icon{
-    width: 200px;
-    margin: 0 auto;
-    position: relative;
-
-    h2{
-      position: absolute;
-      color: white;
-      left: 0;
-      right: 0;
-      top: 75px;
-    }
-  }
   .title{
     font-family: var(--main-font);
     margin-bottom: 10rem;
@@ -31,12 +19,13 @@ const Container = styled.div`
   }
 
   .links{
-    width: 80%;
-    margin: 0 auto;
+    width: 100%;
 
     ul{
-      display: flex;
-      justify-content:  space-between;
+      padding-inline-start: 0;
+      display: grid;
+      text-align: center;
+      grid-template-columns: 1fr 1fr;
     }
 
     li{
@@ -68,7 +57,7 @@ export const Hero = () => {
           <div className="links">
             <ul>
             {nodes.map(navItem => {
-              return(<Link to={navItem.slug.current} key={navItem.id}><h5>{navItem.title}</h5></Link>)
+              return(<Link to={navItem.slug.current} key={navItem.id}><h4>{navItem.title}</h4></Link>)
             })}
             </ul>
           </div>

@@ -11,7 +11,7 @@ import { Link } from 'gatsby'
 
 const Container = styled.div`
   width: 100%;
-  height: 50vh;
+  min-height: 50vh;
   background: var(--black);
 
   .custom-shape-divider-top-1645069763 {
@@ -45,10 +45,12 @@ const GallaryContainer = styled.div`
 
   .card-container{
     width: 80%;
+    height: auto;
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
     margin: 0 auto;
+    padding-bottom: 10rem;
     justify-content: center;
   }
 
