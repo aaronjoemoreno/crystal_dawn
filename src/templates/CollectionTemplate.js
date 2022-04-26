@@ -24,7 +24,7 @@ const Container = styled.div`
 `
 
 const CardContainer = styled.div`
-  margin-top: 10px;
+  margin-top: 2rem;
 `
 
 const CollectionTemplate = ({ data: {products}, pageContext }) => {

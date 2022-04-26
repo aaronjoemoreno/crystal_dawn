@@ -47,7 +47,7 @@ const GallaryContainer = styled.div`
     width: 80%;
     height: auto;
     display: flex;
-    gap: 20px;
+    gap: 2rem;
     flex-wrap: wrap;
     margin: 0 auto;
     padding-bottom: 10rem;
