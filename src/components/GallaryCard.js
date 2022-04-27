@@ -57,10 +57,9 @@ const Card = styled.div`
 `
 export const GallaryCard = ({title, images, cost, sold}) => {
 
+  let firstImage;
   //TODO - Clean up
-  if(images){
-    const firstImage = images[0]
-  }
+  if(images) firstImage = images[0]
 
   return (
     <Card>
