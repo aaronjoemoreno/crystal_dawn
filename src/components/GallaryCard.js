@@ -56,11 +56,15 @@ const Card = styled.div`
   }
 `
 export const GallaryCard = ({title, images, cost, sold}) => {
-  const firstImage = images[0]
+
+  //TODO - Clean up
+  if(images){
+    const firstImage = images[0]
+  }
 
   return (
     <Card>
-      <GatsbyImage image={firstImage.asset.gatsbyImageData} alt={title} className={ sold == false ? "sold-overlay" : ""} />
+      <GatsbyImage image={firstImage?.asset?.gatsbyImageData} alt={title} className={ sold == false ? "sold-overlay" : ""} />
       <h3 className="title">{title}</h3>
 
       <div className="bottom-price">
