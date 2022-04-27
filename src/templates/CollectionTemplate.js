@@ -1,5 +1,5 @@
 import React from 'react'
-import { SmallHeader } from '../components/navigation/smallHeader'
+import { SmallHeader } from '../components/navigation/SmallHeader'
 import MobileNav from '../components/MobileNav'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
