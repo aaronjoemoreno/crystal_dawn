@@ -57,7 +57,7 @@ export const Hero = () => {
           <div className="links">
             <ul>
             {nodes.map(navItem => {
-              return(<Link to={navItem.slug.current} key={navItem.id}><h4>{navItem.title}</h4></Link>)
+              return(<Link to={`collection/${navItem.slug.current}`} key={navItem.id}><h4>{navItem.title}</h4></Link>)
             })}
             </ul>
           </div>
