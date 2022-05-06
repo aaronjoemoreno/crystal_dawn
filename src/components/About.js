@@ -7,7 +7,6 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import { GallaryCard } from './GallaryCard'
 import { Link } from 'gatsby'
 
-{/* <GatsbyImage image={pastor.image.asset.gatsbyImageData}/> */}
 
 const Container = styled.div`
   width: 100%;
