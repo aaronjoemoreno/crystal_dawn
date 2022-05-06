@@ -29,7 +29,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   data.collections.nodes.forEach(collection => {
     createPage({
-      path: `/collections/${collection.slug.current}`,
+      path: `${collection.slug.current}`,
       component: collectionTemplate,
       context: {title: collection.title, description: collection.description || "Collection Details Coming Soon", slug: collection.slug.current},
       defer: true,
@@ -38,9 +38,9 @@ exports.createPages = async ({ graphql, actions }) => {
 
   data.products.nodes.forEach(product => {
     createPage({
-      path: `/ch/${product.slug.current}`,
+      path: `${product.slug.current}`,
       component: productTemplate,
-      context: {title: product.title, description: product.description || "{roduct Details Coming Soon", slug: product.slug.current},
+      context: {title: product.title, description: product.description || "Product Details Coming Soon", slug: product.slug.current},
       defer: true,
     })
   })
