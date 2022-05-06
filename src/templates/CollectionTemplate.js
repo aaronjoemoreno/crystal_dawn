@@ -11,6 +11,7 @@ const Container = styled.div`
   background: var(--black);
   margin-top: -5px;
   padding-top: 10rem;
+  padding-bottom: 10rem;
   text-align: center;
 
   h4{
@@ -36,7 +37,7 @@ const CollectionTemplate = ({ data: {products}, pageContext }) => {
       <Container>
         <h4>{pageContext.title}</h4>
         {products.nodes.map((item) => {
-          const link = `/${item.slug.current}`
+          const link = `/ch/${item.slug.current}`
           return(
             <CardContainer>
               <Link to={link} className='card-link' key={item.slug}>

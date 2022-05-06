@@ -27,7 +27,6 @@ const Container = styled.div`
     }
   }
 
-
   .cost{
     margin-top: 2rem;
     color: var(--white);
@@ -38,6 +37,7 @@ const Container = styled.div`
     height: 40px;
     line-height: 40px;
     background: var(--white);
+    color: var(--black);
     margin: 0 auto;
     margin-top: 1rem;
 
@@ -61,9 +61,10 @@ const Container = styled.div`
 `
 
 const ProductTemplate = ({data}) => {
-  console.log(data)
 
   const { products: { title , isSold, images, cost} } = data;
+
+  console.log(data)
   return (
     <>
       <MobileNav />
@@ -72,14 +73,14 @@ const ProductTemplate = ({data}) => {
         <h2>{title}</h2>
         <div className="img-container">
           {images.map((img) => {
-            return(<GatsbyImage image={img?.asset?.gatsbyImageData} alt={title} clasName='product-img' />)
+            return(<GatsbyImage key={title} image={img?.asset?.gatsbyImageData} alt={title} className='product-img' />)
           })}
           <h3 className="cost">${cost}</h3>
           <div className="bottom-price">
-            {isSold == false &&
+            {isSold == true &&
               <h4 className="sold">Buy</h4>
             }
-            {isSold != false &&
+            {isSold == false &&
               <h4 className="sold">Sold</h4>
             }
           </div>
