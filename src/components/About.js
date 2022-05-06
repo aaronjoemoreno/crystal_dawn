@@ -132,7 +132,7 @@ export const About = () => {
       <div className="card-container">
       {edges.map(item => {
         return(
-          <Link to={item.node.slug.current} key={item.node.id}>
+          <Link to={`ch/${item.node.slug.current}`} key={item.node.id}>
             <GallaryCard title={item.node.title} images={item.node.images} cost={item.node.cost} sold={item.node.isSold} />
           </Link>
           )
